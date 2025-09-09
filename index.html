@@ -1,11 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Cards estilo callout</title>
+  <style>
+    body {
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .cards-container {
+      display: flex;
+      gap: 30px;
+    }
+    .card {
+      position: relative;
+      width: 250px;
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 1s ease-in-out; /* transición más suave */
+      transform-style: preserve-3d;
+    }
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+      backface-visibility: hidden;
+    }
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      backface-visibility: hidden;
+      transform: rotateY(0deg);
+    }
+    .card h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.9em;
+      margin-bottom: 30px;
+    }
+    .arrow {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-size: 1.2em;
+    }
+    /* Fondos con imágenes */
+    .card1 {
+      background: url("https://picsum.photos/id/27/400/300") center/cover no-repeat;
+    }
+    .card2 {
+      background: url("https://picsum.photos/id/10/400/300") center/cover no-repeat;
+    }
+    .card3 {
+      background: url("https://picsum.photos/id/20/400/300") center/cover no-repeat;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="cards-container">
+    <div class="card card1" onclick="location.href='page01.html'">
+      <div class="card-content">
+        <h2>Page1</h2>
+        <p>A short sentence describing this callout is.</p>
+        <div class="arrow">➔</div>
+      </div>
+    </div>
+    <div class="card card2" onclick="location.href='page02.html'">
+      <div class="card-content">
+        <h2>Page2</h2>
+        <p>A short sentence describing this callout is.</p>
+        <div class="arrow">➔</div>
+      </div>
+    </div>
+    <div class="card card3" onclick="location.href='page03.html'">
+      <div class="card-content">
+        <h2>Page3</h2>
+        <p>A short sentence describing this callout is.</p>
+        <div class="arrow">➔</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
