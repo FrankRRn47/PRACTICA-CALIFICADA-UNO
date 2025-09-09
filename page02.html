@@ -1,11 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>page02.html - Ventana y Card RGB</title>
+  <style>
+    body {
+      background: #222;
+      color: #f4f4f4;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 40px 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+.window {
+  background: linear-gradient(145deg, #2c2f33, #3b4148);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.6);
+  padding: 2.2rem 3rem 1.7rem 3rem;
+  margin-bottom: 48px;
+  max-width: 700px;
+  width: 100%;
+  border: 1px solid #4e5a66;
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.window-icons {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+  margin-bottom: 36px;
+  padding-right: 4px;
+}
+
+.window-icons svg {
+  width: 30px;
+  height: 30px;
+  fill: #d1d8e0;
+  transition: fill 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.window-icons svg:hover {
+  fill: #a3d977;
+  transform: scale(1.15) rotate(10deg);
+}
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .form-fields {
+      display: flex;
+      gap: 18px;
+    }
+    .form-fields input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: 1px solid #666;
+      background: #222;
+      color: #f2f2f2;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .form-fields input[type="text"]:focus {
+      border: 1.7px solid #97e084;
+    }
+    .form-extras {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .form-extras label {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .form-extras input[type="checkbox"] {
+      margin-right: 8px;
+      accent-color: #97e084;
+    }
+    .form-actions {
+      display: flex; gap: 18px;
+      justify-content: flex-end;
+    }
+    .form-actions button {
+      padding: 8px 20px;
+      border-radius: 5px;
+      border: none;
+      background: #97e084;
+      color: #222;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-actions button.secondary {
+      background: #515757;
+      color: #f4f4f4;
+    }
+    .form-actions button:hover {
+      background: #6eb452;
+      color: #fff;
+    }
+    .form-actions button.secondary:hover {
+      background: #686e6c;
+      color: #fff;
+    }
+
+    /* Card RGB */
+    .rgb-card {
+      background: #222;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px #0007;
+      overflow: hidden;
+      width: 400px;
+      max-width: 95vw;
+      margin-top: 18px;
+    }
+    .card-color {
+      height: 120px;
+      background: rgb(80,165,92);
+      transition: background 0.16s;
+    }
+    .card-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 20px 20px 12px 20px;
+      background: #181a1b;
+    }
+    .slide-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .slide-row label {
+      width: 22px;
+      font-weight: 600;
+      color: #97e084;
+      letter-spacing: 0.2em;
+    }
+    .slide-row input[type="range"] {
+      flex: 1 1 0%;
+      accent-color: #97e084;
+      height: 2px;
+      margin-right: 6px;
+    }
+    .slide-row input[type="number"] {
+      width: 52px;
+      padding: 6px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background: #232523;
+      color: #f4f4f4;
+      font-size: 1rem;
+      margin-left: 3px;
+      text-align: center;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .slide-row input[type="number"]:focus {
+      border: 1.7px solid #97e084;
+    }
+    @media (max-width: 600px) {
+      .window, .rgb-card { max-width: 99vw; }
+      .card-controls { padding: 10px; }
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="window">
+    <div class="window-icons">
+      <!-- Icono 1 -->
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4" stroke="#222" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <!-- Icono 2 -->
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="3.5" fill="#222"/></svg>
+      <!-- Icono 3 -->
+      <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#e2e2e2" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <!-- Icono 4 -->
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="#181a1b"/><path d="M12 8v4l2.5 2.5" stroke="#e2e2e2" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <form>
+      <div class="form-fields">
+        <input type="text" placeholder="Nombre" required>
+        <input type="text" placeholder="Correo" required>
+        <input type="text" placeholder="Teléfono" required>
+      </div>
+      <div class="form-extras">
+        <label>
+          <input type="checkbox">
+          Acepto términos
+        </label>
+      </div>
+      <div class="form-actions">
+        <button type="submit">Enviar</button>
+        <button type="reset" class="secondary">Limpiar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="rgb-card">
+    <div class="card-color" id="colorBox"></div>
+    <div class="card-controls">
+      <div class="slide-row">
+        <label for="red">R</label>
+        <input id="red" type="range" min="0" max="255" value="80">
+        <input id="redNum" type="number" min="0" max="255" value="80">
+      </div>
+      <div class="slide-row">
+        <label for="green">G</label>
+        <input id="green" type="range" min="0" max="255" value="165">
+        <input id="greenNum" type="number" min="0" max="255" value="165">
+      </div>
+      <div class="slide-row">
+        <label for="blue">B</label>
+        <input id="blue" type="range" min="0" max="255" value="92">
+        <input id="blueNum" type="number" min="0" max="255" value="92">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function clamp(val, min, max) {
+      return Math.max(min, Math.min(max, val));
+    }
+    function setRGBColor() {
+      var r = clamp(Number(red.value),0,255);
+      var g = clamp(Number(green.value),0,255);
+      var b = clamp(Number(blue.value),0,255);
+      colorBox.style.background = `rgb(${r},${g},${b})`;
+      redNum.value = r;
+      greenNum.value = g;
+      blueNum.value = b;
+    }
+    function syncSliderWithInput(slider, numInput) {
+      slider.addEventListener('input', () => {
+        numInput.value = slider.value;
+        setRGBColor();
+      });
+      numInput.addEventListener('input', () => {
+        let v = clamp(Number(numInput.value), 0, 255);
+        slider.value = v;
+        setRGBColor();
+      });
+    }
+    const colorBox = document.getElementById('colorBox');
+    const red = document.getElementById('red');
+    const green = document.getElementById('green');
+    const blue = document.getElementById('blue');
+    const redNum = document.getElementById('redNum');
+    const greenNum = document.getElementById('greenNum');
+    const blueNum = document.getElementById('blueNum');
+    syncSliderWithInput(red, redNum);
+    syncSliderWithInput(green, greenNum);
+    syncSliderWithInput(blue, blueNum);
+    setRGBColor(); // Inicializar
+  </script>
 </body>
 </html>
